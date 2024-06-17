@@ -28,25 +28,25 @@
                 "name": "Core",
                 "files": [
                   {
-                    "path": "../Core/Src/freertos.c"
+                    "path": "../Core/Src/main.c"
                   },
                   {
                     "path": "../Core/Src/gpio.c"
                   },
                   {
-                    "path": "../Core/Src/main.c"
-                  },
-                  {
-                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
-                  },
-                  {
-                    "path": "../Core/Src/stm32f1xx_it.c"
+                    "path": "../Core/Src/freertos.c"
                   },
                   {
                     "path": "../Core/Src/tim.c"
                   },
                   {
                     "path": "../Core/Src/wwdg.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32f1xx_it.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
                   }
                 ],
                 "folders": []
@@ -59,15 +59,6 @@
         "name": "Drivers",
         "files": [],
         "folders": [
-          {
-            "name": "CMSIS",
-            "files": [
-              {
-                "path": "../Core/Src/system_stm32f1xx.c"
-              }
-            ],
-            "folders": []
-          },
           {
             "name": "STM32F1xx_HAL_Driver",
             "files": [
@@ -115,6 +106,15 @@
               }
             ],
             "folders": []
+          },
+          {
+            "name": "CMSIS",
+            "files": [
+              {
+                "path": "../Core/Src/system_stm32f1xx.c"
+              }
+            ],
+            "folders": []
           }
         ]
       },
@@ -126,9 +126,6 @@
             "name": "FreeRTOS",
             "files": [
               {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c"
-              },
-              {
                 "path": "../Middlewares/Third_Party/FreeRTOS/Source/croutine.c"
               },
               {
@@ -136,12 +133,6 @@
               },
               {
                 "path": "../Middlewares/Third_Party/FreeRTOS/Source/list.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/port.c"
               },
               {
                 "path": "../Middlewares/Third_Party/FreeRTOS/Source/queue.c"
@@ -154,6 +145,15 @@
               },
               {
                 "path": "../Middlewares/Third_Party/FreeRTOS/Source/timers.c"
+              },
+              {
+                "path": "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c"
+              },
+              {
+                "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"
+              },
+              {
+                "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/port.c"
               }
             ],
             "folders": []
@@ -166,7 +166,7 @@
   "deviceName": null,
   "packDir": null,
   "miscInfo": {
-    "uid": "4a5f71bd551611e3151b14662794a029"
+    "uid": "fb35a545bf11aaf1c37274d99379322e"
   },
   "targets": {
     "Quadcopter": {
@@ -213,8 +213,8 @@
               "tag": "IRAM",
               "id": 1,
               "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
+                "startAddr": "0x20000000",
+                "size": "0x5000"
               },
               "isChecked": true,
               "noInit": false
@@ -265,8 +265,8 @@
               "tag": "IROM",
               "id": 1,
               "mem": {
-                "startAddr": "",
-                "size": ""
+                "startAddr": "0x8000000",
+                "size": "0x10000"
               },
               "isChecked": true,
               "isStartup": true
@@ -292,7 +292,7 @@
         "resetMode": "default",
         "runAfterProgram": true,
         "speed": 4000,
-        "address": "",
+        "address": "0x8000000",
         "elFile": "None",
         "optionBytes": ".eide/quadcopter.st.option.bytes.ini",
         "otherCmds": ""
