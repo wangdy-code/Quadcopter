@@ -21,7 +21,7 @@ void LEDInit()
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
-void PoletLED(void *argument)
+void PilotLED(void *argument)
 {
     while (1)
     {
