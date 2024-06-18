@@ -22,5 +22,5 @@ typedef struct
 
 extern sLED LED;
 void LEDInit();
-void PoletLED();
+void PoletLED(void *argument);
 #endif // !__LED_H
