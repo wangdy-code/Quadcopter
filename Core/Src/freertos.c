@@ -22,7 +22,7 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
-#include "../Hardware/LED/led.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -61,6 +61,13 @@ const osThreadAttr_t LEDTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for MPU6050Task */
+osThreadId_t MPU6050TaskHandle;
+const osThreadAttr_t MPU6050Task_attributes = {
+  .name = "MPU6050Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -69,6 +76,7 @@ const osThreadAttr_t LEDTask_attributes = {
 
 void StartDefaultTask(void *argument);
 void PilotLED(void *argument);
+void MpuGetData(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -104,6 +112,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of LEDTask */
   LEDTaskHandle = osThreadNew(PilotLED, NULL, &LEDTask_attributes);
+
+  /* creation of MPU6050Task */
+  MPU6050TaskHandle = osThreadNew(MpuGetData, NULL, &MPU6050Task_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -149,6 +160,24 @@ __weak void PilotLED(void *argument)
     osDelay(1);
   }
   /* USER CODE END PilotLED */
+}
+
+/* USER CODE BEGIN Header_MpuGetData */
+/**
+* @brief Function implementing the MPU6050Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_MpuGetData */
+__weak void MpuGetData(void *argument)
+{
+  /* USER CODE BEGIN MpuGetData */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END MpuGetData */
 }
 
 /* Private application code --------------------------------------------------*/

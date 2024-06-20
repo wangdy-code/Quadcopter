@@ -35,7 +35,7 @@ extern "C" {
 extern UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN Private defines */
-
+#include "stdio.h"
 /* USER CODE END Private defines */
 
 void MX_USART3_UART_Init(void);
