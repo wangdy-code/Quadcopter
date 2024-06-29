@@ -93,9 +93,9 @@ void MpuGetData(void *argument)
     {
         MPU6050_Read_Accel();
         MPU6050_Read_Gyro();
-        printf("Accel:{ x: %f, y: %f, z: %f }\n Grol:{ x: %f, y: %f, z: %f } ",
+        printf("{DATA,%f,%f,%f,%f,%f,%f}",
                Mpu6050_Data.Accel_X, Mpu6050_Data.Accel_Y, Mpu6050_Data.Accel_Z,
                Mpu6050_Data.Gyro_X, Mpu6050_Data.Gyro_Y, Mpu6050_Data.Gyro_Z);
-        osDelay(1000);
+        osDelay(100);
     }
 }
