@@ -30,7 +30,7 @@ int8_t MPU6050_Init(int16_t Addr)
 {
     uint8_t check;
     HAL_I2C_Mem_Read(&hi2c1, Addr, WHO_AM_I, 1, &check, 1, 1000);
-    printf("check:%d", check);
+    // printf("check:%d", check);
     if (check == MPU6050_PRODUCT_ID) // 确认设备用 地址寄存器
     {
         check = 0x00;
@@ -93,9 +93,9 @@ void MpuGetData(void *argument)
     {
         MPU6050_Read_Accel();
         MPU6050_Read_Gyro();
-        printf("{DATA,%f,%f,%f,%f,%f,%f}",
-               Mpu6050_Data.Accel_X, Mpu6050_Data.Accel_Y, Mpu6050_Data.Accel_Z,
-               Mpu6050_Data.Gyro_X, Mpu6050_Data.Gyro_Y, Mpu6050_Data.Gyro_Z);
+        // printf("{DATA,%f,%f,%f,%f,%f,%f}",
+        //        Mpu6050_Data.Accel_X, Mpu6050_Data.Accel_Y, Mpu6050_Data.Accel_Z,
+        //        Mpu6050_Data.Gyro_X, Mpu6050_Data.Gyro_Y, Mpu6050_Data.Gyro_Z);
         osDelay(100);
     }
 }

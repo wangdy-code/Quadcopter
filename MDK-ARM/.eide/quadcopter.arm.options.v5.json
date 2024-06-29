@@ -3,8 +3,8 @@
     "beforeBuildTasks": [],
     "afterBuildTasks": [],
     "global": {
-        "output-debug-info": "enable",
-        "use-microLIB": true
+        "use-microLIB": true,
+        "output-debug-info": "enable"
     },
     "c/cpp-compiler": {
         "optimization": "level-3",

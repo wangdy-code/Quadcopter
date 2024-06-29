@@ -6,11 +6,9 @@
     ],
     "settings": {
         "files.associations": {
-            "mpu6050.h": "c",
-            "stdio.h": "c",
-            "gpio.h": "c",
-            "stm32f1xx_hal.h": "c",
-            "stm32f1xx_hal_conf.h": "c"
+            "nrf24l01.h": "c",
+            "cmsis_os.h": "c",
+            "freertos.h": "c"
         }
     },
     "extensions": {}

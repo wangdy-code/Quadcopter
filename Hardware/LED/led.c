@@ -1,6 +1,5 @@
 #include "led.h"
 #include "usart.h"
-#include "MPU6050/MPU6050.h"
 #include "stdio.h"
 sLED LED = {300, AllFlashLight};
 void LEDInit()
