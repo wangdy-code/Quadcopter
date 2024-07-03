@@ -4,7 +4,7 @@
 #include "spi.h"
 #include "cmsis_os.h"
 #include "stdio.h"
-
+#include "init.h"
 #define NRF24L01_CE GPIO_PIN_11  // CE PA11
 #define NRF24L01_CSN GPIO_PIN_12 // CSN PB12
 #define NRF24L01_IRQ GPIO_PIN_12 // IRQ PA12
@@ -12,6 +12,11 @@
 #define NRF_CSN_GP GPIOB
 #define NRF_IRQ_GP GPIOA
 
+// NRF24L01发送接收数据宽度定义
+#define TX_ADR_WIDTH 5    // 5字节的地址宽度
+#define RX_ADR_WIDTH 5    // 5字节的地址宽度
+#define TX_PLOAD_WIDTH 32 // 20字节的用户数据宽度
+#define RX_PLOAD_WIDTH 32 // 20字节的用户数据宽度
 // NRF24L01寄存器操作命令
 #define SPI_READ_REG 0x00  // 读配置寄存器,低5位为寄存器地址
 #define SPI_WRITE_REG 0x20 // 写配置寄存器,低5位为寄存器地址
@@ -54,6 +59,11 @@
 #define RX_PW_P5 0x16    // 接收数据通道5有效数据宽度(1~32字节),设置为0则非法
 #define FIFO_STATUS 0x17 // FIFO状态寄存器;bit0,RX FIFO寄存器空标志;bit1,RX FIFO满标志;bit2,3,保留
 
+#define MODEL_RX 1  //????
+#define MODEL_TX 2  //????
+#define MODEL_RX2 3 //????2,??????
+#define MODEL_TX2 4 //????2,??????
+
 void NRF24L01Init();
 uint8_t NRF24L01Check();
 uint8_t NRF24SPISendByte(uint8_t txData);
@@ -61,4 +71,7 @@ uint8_t NRF24WriteReg(uint8_t regAddr, uint8_t data);
 uint8_t NRF24ReadReg(uint8_t regAddr);
 uint8_t NRF24ReadBuf(uint8_t regAddr, uint8_t *pBuf, uint8_t dataLen);
 uint8_t NRF24WriteBuf(uint8_t regAddr, uint8_t *pBuf, uint8_t dataLen);
+uint8_t NRF24L01TxPacket(uint8_t *txBuf);
+uint8_t NRF24L01TxPacket(uint8_t *rxBuf);
+void NRF24L01_init();
 #endif // !__NRF24L01_H

@@ -36,19 +36,25 @@
                 "name": "Core",
                 "files": [
                   {
-                    "path": "../Core/Src/main.c"
+                    "path": "../Core/Src/freertos.c"
                   },
                   {
                     "path": "../Core/Src/gpio.c"
                   },
                   {
-                    "path": "../Core/Src/freertos.c"
-                  },
-                  {
                     "path": "../Core/Src/i2c.c"
                   },
                   {
+                    "path": "../Core/Src/main.c"
+                  },
+                  {
                     "path": "../Core/Src/spi.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32f1xx_it.c"
                   },
                   {
                     "path": "../Core/Src/tim.c"
@@ -58,12 +64,6 @@
                   },
                   {
                     "path": "../Core/Src/wwdg.c"
-                  },
-                  {
-                    "path": "../Core/Src/stm32f1xx_it.c"
-                  },
-                  {
-                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
                   }
                 ],
                 "folders": []
@@ -196,7 +196,9 @@
   },
   "targets": {
     "Quadcopter": {
-      "excludeList": [],
+      "excludeList": [
+        "../Core/Src/Init.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",

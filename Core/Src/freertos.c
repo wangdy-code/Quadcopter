@@ -68,6 +68,20 @@ const osThreadAttr_t MPU6050Task_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for ANOTask */
+osThreadId_t ANOTaskHandle;
+const osThreadAttr_t ANOTask_attributes = {
+  .name = "ANOTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityBelowNormal1,
+};
+/* Definitions for NRFDATAAnl */
+osThreadId_t NRFDATAAnlHandle;
+const osThreadAttr_t NRFDATAAnl_attributes = {
+  .name = "NRFDATAAnl",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -77,6 +91,8 @@ const osThreadAttr_t MPU6050Task_attributes = {
 void StartDefaultTask(void *argument);
 void PilotLED(void *argument);
 void MpuGetData(void *argument);
+void ANONRFCheckEvent(void *argument);
+void NRFConnect(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -115,6 +131,12 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of MPU6050Task */
   MPU6050TaskHandle = osThreadNew(MpuGetData, NULL, &MPU6050Task_attributes);
+
+  /* creation of ANOTask */
+  ANOTaskHandle = osThreadNew(ANONRFCheckEvent, NULL, &ANOTask_attributes);
+
+  /* creation of NRFDATAAnl */
+  NRFDATAAnlHandle = osThreadNew(NRFConnect, NULL, &NRFDATAAnl_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -179,6 +201,42 @@ __weak void MpuGetData(void *argument)
     osDelay(1);
   }
   /* USER CODE END MpuGetData */
+}
+
+/* USER CODE BEGIN Header_ANONRFCheckEvent */
+/**
+* @brief Function implementing the ANOTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ANONRFCheckEvent */
+__weak void ANONRFCheckEvent(void *argument)
+{
+  /* USER CODE BEGIN ANONRFCheckEvent */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ANONRFCheckEvent */
+}
+
+/* USER CODE BEGIN Header_NRFConnect */
+/**
+* @brief Function implementing the NRFDATAAnl thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_NRFConnect */
+__weak void NRFConnect(void *argument)
+{
+  /* USER CODE BEGIN NRFConnect */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END NRFConnect */
 }
 
 /* Private application code --------------------------------------------------*/

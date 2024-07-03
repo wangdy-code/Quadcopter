@@ -2,13 +2,20 @@
     "folders": [
         {
             "path": "."
+        },
+        {
+            "path": ".."
         }
     ],
     "settings": {
         "files.associations": {
             "nrf24l01.h": "c",
             "cmsis_os.h": "c",
-            "freertos.h": "c"
+            "freertos.h": "c",
+            "init.h": "c",
+            "spi.h": "c",
+            "main.h": "c",
+            "stm32f1xx_ll_spi.h": "c"
         }
     },
     "extensions": {}

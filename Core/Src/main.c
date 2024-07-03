@@ -106,12 +106,7 @@ int main(void)
   {
     printf("mpuinit faied\n");
   }
-  NRF24L01Init();
-  if (NRF24L01Check() != 0)
-  {
-    printf("status: %d", NRF24L01Check());
-    printf("NRF24L01Check faied\n");
-  }
+  NRF24L01_init();
 
   /* USER CODE END 2 */
 
