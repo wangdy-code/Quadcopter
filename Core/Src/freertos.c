@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * File Name          : freertos.c
-  * Description        : Code for freertos applications
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * File Name          : freertos.c
+ * Description        : Code for freertos applications
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -50,37 +50,37 @@
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+    .name = "defaultTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
 };
 /* Definitions for LEDTask */
 osThreadId_t LEDTaskHandle;
 const osThreadAttr_t LEDTask_attributes = {
-  .name = "LEDTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "LEDTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for MPU6050Task */
 osThreadId_t MPU6050TaskHandle;
 const osThreadAttr_t MPU6050Task_attributes = {
-  .name = "MPU6050Task",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+    .name = "MPU6050Task",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
 };
 /* Definitions for ANOTask */
 osThreadId_t ANOTaskHandle;
 const osThreadAttr_t ANOTask_attributes = {
-  .name = "ANOTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityBelowNormal1,
+    .name = "ANOTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityBelowNormal1,
 };
 /* Definitions for NRFDATAAnl */
 osThreadId_t NRFDATAAnlHandle;
 const osThreadAttr_t NRFDATAAnl_attributes = {
-  .name = "NRFDATAAnl",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+    .name = "NRFDATAAnl",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,11 +97,12 @@ void NRFConnect(void *argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /**
-  * @brief  FreeRTOS initialization
-  * @param  None
-  * @retval None
-  */
-void MX_FREERTOS_Init(void) {
+ * @brief  FreeRTOS initialization
+ * @param  None
+ * @retval None
+ */
+void MX_FREERTOS_Init(void)
+{
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -145,40 +146,39 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
-
 }
-
+#include "tim.h"
 /* USER CODE BEGIN Header_StartDefaultTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used
-  * @retval None
-  */
+ * @brief  Function implementing the defaultTask thread.
+ * @param  argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
-  for(;;)
+  for (;;)
   {
     
-    osDelay(5000);
+    osDelay(10);
   }
   /* USER CODE END StartDefaultTask */
 }
 
 /* USER CODE BEGIN Header_PilotLED */
 /**
-* @brief Function implementing the LEDTask thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the LEDTask thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_PilotLED */
 __weak void PilotLED(void *argument)
 {
   /* USER CODE BEGIN PilotLED */
   /* Infinite loop */
-  for(;;)
+  for (;;)
   {
     osDelay(1);
   }
@@ -187,16 +187,16 @@ __weak void PilotLED(void *argument)
 
 /* USER CODE BEGIN Header_MpuGetData */
 /**
-* @brief Function implementing the MPU6050Task thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the MPU6050Task thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_MpuGetData */
 __weak void MpuGetData(void *argument)
 {
   /* USER CODE BEGIN MpuGetData */
   /* Infinite loop */
-  for(;;)
+  for (;;)
   {
     osDelay(1);
   }
@@ -205,16 +205,16 @@ __weak void MpuGetData(void *argument)
 
 /* USER CODE BEGIN Header_ANONRFCheckEvent */
 /**
-* @brief Function implementing the ANOTask thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the ANOTask thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_ANONRFCheckEvent */
 __weak void ANONRFCheckEvent(void *argument)
 {
   /* USER CODE BEGIN ANONRFCheckEvent */
   /* Infinite loop */
-  for(;;)
+  for (;;)
   {
     osDelay(1);
   }
@@ -223,16 +223,16 @@ __weak void ANONRFCheckEvent(void *argument)
 
 /* USER CODE BEGIN Header_NRFConnect */
 /**
-* @brief Function implementing the NRFDATAAnl thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the NRFDATAAnl thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_NRFConnect */
 __weak void NRFConnect(void *argument)
 {
   /* USER CODE BEGIN NRFConnect */
   /* Infinite loop */
-  for(;;)
+  for (;;)
   {
     osDelay(1);
   }
@@ -243,4 +243,3 @@ __weak void NRFConnect(void *argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
-

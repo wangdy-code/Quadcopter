@@ -107,7 +107,6 @@ int main(void)
     printf("mpuinit faied\n");
   }
   NRF24L01_init();
-
   /* USER CODE END 2 */
 
   /* Init scheduler */
